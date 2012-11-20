@@ -1,7 +1,8 @@
 Beacon
 ======
+##Intro
 
-Beacon Project##Topologic 
+##Topologic 
 
 ##Hardware
 
