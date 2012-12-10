@@ -1,7 +1,11 @@
-Beacon-Lighting-Communication
-=============================
+## Beacon-Lighting-Communication
 
 Beacon communicate library with light dependent resistor (i.e photoresistance) in Android.
+
+This repo include [Android
+Library](https://github.com/seeedstudio/Beacon/tree/master/Beacon-Lighting-Communication/android-library)
+and
+[Demo](https://github.com/seeedstudio/Beacon/tree/master/Beacon-Lighting-Communication/Demo)
 
 ## Usage
 
@@ -14,13 +18,16 @@ Normally, you have to instantiate it at first. and then, you can use it like bel
  - start it.
 
 Also, you don't to know all the detail. There are code sample.
-    
+
     // assume the data is String data type
     String data = "1";
+
     // instantiate State with a Handler.
     State state = new State(getApplicationContext(), mHandler);
+
     // createa boolean arrary and convert the data to boolean arrary.
     boolean[] bits = new boolean[8];
     bits = state.convertToByte(data);
+
     // start it with state and time ArraryList data.
     state.start(state.stateList, state.timeList);
