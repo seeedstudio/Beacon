@@ -1,0 +1,8 @@
+*~
+.*.swp
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+
+# binary file or directory
+Beacon-Android/Beacon-Lighting-Communication-Demo/bin
