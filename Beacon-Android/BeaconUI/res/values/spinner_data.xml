@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="frq">
+        <item>Null</item>
+        <item>Standard(1s)</item>
+        <item>Fast(100ms)</item>
+        <item>Low(1min)</item>
+        <item>Minimun(1hour)</item>
+    </string-array>
+    <string-array name="units">
+        <item>ms</item>
+        <item>s</item>
+        <item>min</item>
+        <item>hour</item>
+    </string-array>
+    <string-array name="action_type">
+        <item>Off</item>
+        <item>On</item>
+    </string-array>
+    <string-array name="compare_type">
+        <item>&gt;</item>
+        <item>&lt;</item>
+        <item>=</item>
+        <item>Null</item>
+    </string-array>
+
+</resources>
