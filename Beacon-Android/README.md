@@ -1,3 +1,9 @@
+## Beacon-Android-App
+**WARNING** **I delete the Beacon-Lighting-Communication**, It be instead of Android Beacon setup App.
+The setup App relay by BeaconLibrary.
+
+And ... of course. It still WIP.
+
 ## Beacon-Lighting-Communication
 
 Beacon communicate library with light dependent resistor (i.e photoresistance)
