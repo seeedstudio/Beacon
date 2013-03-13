@@ -1,9 +1,6 @@
 package com.seeedstudio.library;
 
-public class Lighting {
+public interface Lighting {
 
-    public Lighting() {
-        super();
-    }
-    
+    public void onSend();
 }

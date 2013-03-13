@@ -20,12 +20,13 @@ public class State {
 
     // debugging
     private static final String TAG = "State";
-    private static final boolean D = true;
+    private static final boolean D = false;
 
     // *********************************************************** //
     // static data
     // *********************************************************** //
     // the light state, high_bit is light, low_bit is black.
+    public static final int STATE_DONE = 8;
     public static final int STATE_NONE = 7;
     public static final int START_BIT = 2;
     public static final int HIGH_BIT = 3;
@@ -51,6 +52,8 @@ public class State {
 
     // state none time
     public static int STATE_NONE_TIME = 1000;
+    // state done time
+    public static int STATE_DONE_TIME = 0;
 
     // even and odd check mode, EVEN_MODE means have even "1" bits.
     public static int EVEN_MODE = 1;
@@ -188,6 +191,7 @@ public class State {
                 // timeList.add(HIGH_DOWN_TIME);
                 // stateList.add(HIGH_UP_BIT);
                 // timeList.add(HIGH_UP_TIME);
+
                 // "0"
             } else {
                 if (D)
@@ -203,7 +207,7 @@ public class State {
             }
         }
 
-        // the data's "1" bit is even that mean checkBit bit is "1"
+        // the data's "1" bit is EVEN that mean checkBit bit is "1"
         // otherwise, checkBit bit is "0"
         if (checkBit == 0 || checkBit % 2 == 0) {
             if (D)
@@ -257,14 +261,17 @@ public class State {
         }
 
         // dataList.clear();
-        // prepareEndStateNoneBit();
+        prepareEndStateNoneBit();
 
         return true;
     }
 
     private void prepareEndStateNoneBit() {
+
         stateList.add(STATE_NONE);
         timeList.add(STATE_NONE_TIME);
+        stateList.add(STATE_DONE);
+        timeList.add(STATE_DONE_TIME);
 
     }
 
@@ -273,7 +280,7 @@ public class State {
      */
     private void prepareStartBit() {
         // add the start bit time.
-        timeList.add(1000);
+        timeList.add(1500);
         timeList.add(START_DOWN_TIME);
         timeList.add(START_UP_TIME);
 
@@ -413,6 +420,44 @@ public class State {
             // dataList.add(0); // high 8 bits
             dataList.add(integer); // low 8 bits
             Log.d(TAG, "0 < integer <= 255: " + integer);
+        }
+
+    }
+
+    public void addAtom(Atom atom) {
+        add(atom.getDeviceStartInt());
+        add(atom.getId()); // device id
+
+        // sensor
+        if (atom.getSensorId() != 0) {
+            add(atom.getSensorStartInt());
+            add(atom.getSensorId());
+            if (atom.getSensorFrequency() != Atom.FRQ_NULL) {
+                add(atom.getSensorFrequency());
+            }
+
+        }
+        // if (atom.getSensorFrequency() <= 255) {
+        // add(0);
+        // add(atom.getSensorFrequency());
+        // } else {
+        // add(atom.getSensorFrequency());
+        // }
+        // add(atom.getSensorUnit());
+
+        // actuator
+        if (atom.getActuatorId() != 0) {
+            add(atom.getActuatorStartInt());
+            add(atom.getActuatorId());
+            add(atom.getActuatorTrigger());
+            add(atom.getActuatorAction());
+            add(atom.getActuatorCompare());
+            if (atom.getActuatorCompareValue() <= 255) {
+                add(0);
+                add(atom.getActuatorCompareValue());
+            } else {
+                add(atom.getActuatorCompareValue());
+            }
         }
 
     }
